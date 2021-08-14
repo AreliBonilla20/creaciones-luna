@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\CategoryProduct;
 use Illuminate\Http\Request;
-use App\Http\Requests\ProductRequest;
+use App\Http\Requests\ProductCreateRequest;
+use App\Http\Requests\ProductEditRequest;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -17,8 +19,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        return view('WebSite.Products.index', compact('products'));
+        $products = Product::get();
+        return view('Admin.Products.index', compact('products'));
     }
 
     /**
@@ -27,8 +29,9 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('WebSite.Products.create');
+    {   
+        $categories = CategoryProduct::all();
+        return view('Admin.Products.create', compact('categories'));
     }
 
     /**
@@ -37,9 +40,10 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request)
+    public function store(ProductCreateRequest $request)
     {
         $product = new Product();
+        $product->category_id = $request->category_id;
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
@@ -68,8 +72,8 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Product $product)
-    {
-        return view('WebSite.Products.show', compact('product'));
+    {   
+        return view('Admin.Products.show', compact('product'));
     }
 
     /**
@@ -79,8 +83,9 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Product $product)
-    {
-        return view('WebSite.Products.edit', compact('product'));
+    {   
+        $categories = CategoryProduct::all();
+        return view('Admin.Products.edit', compact('product', 'categories'));
     }
 
     /**
@@ -90,8 +95,9 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductRequest $request, Product $product)
+    public function update(ProductEditRequest $request, Product $product)
     {   
+        $product->category_id = $request->category_id;
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
@@ -121,8 +127,11 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->delete();
+
+        return redirect()->route('products.index');
     }
 }

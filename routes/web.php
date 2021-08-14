@@ -23,4 +23,6 @@ Route::get('/admin', 'PageController@index')->name('admin');
 
 
 Route::resource('products', 'ProductController');
-Route::resource('services', 'ServiceController');
+Route::resource('sections', 'SectionPackageController');
+Route::resource('packages', 'PackageController');
+

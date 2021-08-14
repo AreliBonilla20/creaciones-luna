@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+body{
+    margin: 0;
+    padding: 0;
+    background: #f8f9fa;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+}
+
+.center{
+    text-align: center;
+}
+.navbar-cl{
+    color: #000000;
+}
+
+.title-nav{
+    font-family: 'Lobster', cursive;
+    padding-left: 1%;
+    padding-top: 1%;
+}
+
+.panel-container{
+    padding: 0;
+}
+
+.panel{
+    text-align: center;
+    padding: 1%;
+    background: #f1ccfc
+}
+
+.panel-menu{
+    padding: 1%;
+    text-align: center;
+    background: #ffffff;
+}
+
+.panel-menu ul li{
+    padding: 2%;
+}
+
+.panel-link{
+    color: #7a385f;
+    font-size: 22px;
+}
+
+.panel-link:hover{
+    color: #cfb9ca;
+}
+
+
+.main-content{
+    background: #ffffff;
+    padding: 1%;
+}
+
+.content-title{
+    text-align: center;
+    color: #8d8585;
+}
+
+.index-content{
+    padding: 4%;
+}
+
+.btn-add{
+    color: #ffffff;
+    background: #47d487
+}
+
+.btn-add:hover{
+    color: #ffffff;
+    background: #85dbac
+}
+
+.btn-consult{
+    color: #ffffff;
+    background: #fab753
+}
+
+.btn-consult:hover{
+    color: #ffffff;
+    background: #f5d4a3
+}
+
+.btn-edit{
+    color: #ffffff;
+    background: #5c94da
+}
+
+.btn-edit:hover{
+    color: #ffffff;
+    background: #84b6f4
+}
+
+.btn-delete{
+    color: #ffffff;
+    background: #fd6b63
+}
+
+.btn-delete:hover{
+    color: #ffffff;
+    background: #fd8b85
+}
+
+
+.form-text{
+    text-align: center;
+}
+
+.btn-save{
+    text-align: center;
+}
+
+.product-edit-img{
+    text-align: center;
+}
+
+.show-img{
+    text-align: center;
+}
+
+.btn-show{
+    text-align: right;
+}
+
+.btn-back{
+    text-align: right;
+}
+.items-container{
+    padding: 5%;
+    text-align: center;
+}
+
+.btn-back button{
+    background: #8b8bdb;
+    margin-right: 4%;
+    color: #ffffff;
+}
+
+.btn-back button:hover{
+    background: #a4a4cf;
+    color: #ffffff;
+}
+
+
+.footer{
+    text-align: center;
+    background:#9ef8ef;
+    padding: 1%;
+    color: #000000;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 2%;
+
+}
+
+
+

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\CategoryService;
+use App\ItemPackage;
 use Illuminate\Http\Request;
 
-class CategoryServiceController extends Controller
+class ItemPackageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class CategoryServiceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\CategoryService  $categoryService
+     * @param  \App\ItemPackage  $itemPackage
      * @return \Illuminate\Http\Response
      */
-    public function show(CategoryService $categoryService)
+    public function show(ItemPackage $itemPackage)
     {
         //
     }
@@ -52,10 +52,10 @@ class CategoryServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\CategoryService  $categoryService
+     * @param  \App\ItemPackage  $itemPackage
      * @return \Illuminate\Http\Response
      */
-    public function edit(CategoryService $categoryService)
+    public function edit(ItemPackage $itemPackage)
     {
         //
     }
@@ -64,10 +64,10 @@ class CategoryServiceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\CategoryService  $categoryService
+     * @param  \App\ItemPackage  $itemPackage
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CategoryService $categoryService)
+    public function update(Request $request, ItemPackage $itemPackage)
     {
         //
     }
@@ -75,10 +75,10 @@ class CategoryServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\CategoryService  $categoryService
+     * @param  \App\ItemPackage  $itemPackage
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CategoryService $categoryService)
+    public function destroy(ItemPackage $itemPackage)
     {
         //
     }
