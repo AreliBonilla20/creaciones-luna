@@ -23,7 +23,7 @@
         <div class="col-sm-10">
         <input type="text" class="form-control" id="name" name="name" placeholder="Nombre de la sección" value="{{old('name')}}">
         @foreach ($errors->get('name') as $mensaje)
-            <small style="color:#333399;">{{ $mensaje }}</small>
+            <small class="error-msg">{{ $mensaje }}</small>
         @endforeach
         </div>
     </div>
@@ -32,7 +32,7 @@
         <div class="col-sm-10">
         <textarea type="text" class="form-control" id="description" name="description" placeholder="Descripción de la sección" rows="5" value="{{old('description')}}"></textarea>
         @foreach ($errors->get('description') as $mensaje)
-            <small style="color:#333399;">{{ $mensaje }}</small>
+            <small class="error-msg">{{ $mensaje }}</small>
         @endforeach    
     </div>
     </div>

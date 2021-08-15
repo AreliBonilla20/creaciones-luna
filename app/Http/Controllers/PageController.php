@@ -3,28 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Page;
+use App\Http\Requests\PageRequest;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-   /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
+   
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        return view('WebSite.Page.index');
+    {   
+        $page_content = Page::get()->first();
+        return view('Admin.Page.index', compact('page_content'));
     }
 
     /**
@@ -34,7 +27,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        //
+        return view('Admin.Page.create');
     }
 
     /**
@@ -43,21 +36,22 @@ class PageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PageRequest $request)
     {
-        //
+        $page_content = new Page();
+        $page_content->description_header = $request->description_header;
+        $page_content->who_we_are = $request->who_we_are;
+        
+        if($page_content->save())
+        {
+            return redirect()->route('page.index')->withSuccess('Contenido agregado correctamente!');
+        }
+        else
+        {
+            return redirect()->route('page.index')->withWarning('Ocurrió un error!');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Page  $page
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Page $page)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -65,9 +59,9 @@ class PageController extends Controller
      * @param  \App\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function edit(Page $page)
+    public function edit(Page $page_content)
     {
-        //
+        return view('Admin.Page.edit', compact('page_content'));
     }
 
     /**
@@ -77,9 +71,20 @@ class PageController extends Controller
      * @param  \App\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Page $page)
+    public function update(PageRequest $request, Page $page_content)
     {
-        //
+    
+        $page_content->description_header = $request->description_header;
+        $page_content->who_we_are = $request->who_we_are;
+        
+        if($page_content->save())
+        {
+            return redirect()->route('page.index')->withSuccess('Contenido actualizado correctamente!');
+        }
+        else
+        {
+            return redirect()->route('page.index')->withWarning('Ocurrió un error!');
+        }
     }
 
     /**
@@ -88,7 +93,7 @@ class PageController extends Controller
      * @param  \App\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Page $page)
+    public function destroy($id)
     {
         //
     }

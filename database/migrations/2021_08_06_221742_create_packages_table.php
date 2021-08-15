@@ -25,8 +25,7 @@ class CreatePackagesTable extends Migration
             $table->string('url_image2')->nullable();
             $table->string('url_image3')->nullable();
 
-            $table->string('url_video1')->nullable();;
-            $table->string('url_video2')->nullable();;
+            $table->string('url_video')->nullable();;
             
             $table->foreign('section_id')->references('id')->on('section_packages');
             $table->timestamps();

@@ -31,13 +31,13 @@
         <td>{{$product->name}}</td>
         <td>{{$product->get_availability}}</td>
         <td>$ {{ number_format($product->price, 2 ) }}</td>
-        <td><a href="{{route('products.show', $product)}}"><button class="btn btn-consult"><i class="bi bi-eye"></i> Consultar</button></a></td>
-        <td><a href="{{route('products.edit', $product)}}"><button class="btn btn-edit"><i class="bi bi-pencil"></i> Editar</button></a></td>
+        <td><a href="{{route('products.show', $product)}}"><button class="btn btn-consult btn-sm"><i class="bi bi-eye"></i> Consultar</button></a></td>
+        <td><a href="{{route('products.edit', $product)}}"><button class="btn btn-edit btn-sm"><i class="bi bi-pencil"></i> Editar</button></a></td>
         <td>
         <form method="POST" id="formulario{{$product->id}}" action="{{route('products.destroy', $product->id)}}" >
             @csrf
             @method('DELETE')
-            <button type="button" onClick="confirmar({{$product->id}})" class="btn btn-delete"><i class="bi bi-trash"></i> Eliminar</button>
+            <button type="button" onClick="confirmar({{$product->id}})" class="btn btn-delete btn-sm"><i class="bi bi-trash"></i> Eliminar</button>
         </form>                             
         </td>
       </tr>

@@ -27,8 +27,8 @@
       <p>Disponibilidad : <strong>{{$product->get_availability}}</strong></p>
     
       <div class="btn-show">
-          <a href="{{route('products.edit', $product)}}"><button class="btn btn-edit"><i class="bi bi-pencil"></i> Editar</button></a>
-          <a href="{{route('products.destroy', $product)}}"><button class="btn btn-delete"><i class="bi bi-trash"></i> Eliminar</button>
+          <a href="{{route('products.edit', $product)}}"><button class="btn btn-edit btn-sm"><i class="bi bi-pencil"></i> Editar</button></a>
+          <a href="{{route('products.destroy', $product)}}"><button class="btn btn-delete btn-sm"><i class="bi bi-trash"></i> Eliminar</button>
       </div>
     </div>
   </div>

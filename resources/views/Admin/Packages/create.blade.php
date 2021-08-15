@@ -23,7 +23,7 @@
         <div class="col-sm-10">
         <input type="text" class="form-control" id="name" name="name" placeholder="Nombre del paquete" value="{{old('name')}}">
         @foreach ($errors->get('name') as $mensaje)
-            <small style="color:#333399;">{{ $mensaje }}</small>
+            <small class="error-msg">{{ $mensaje }}</small>
         @endforeach
         </div>
     </div>
@@ -33,7 +33,7 @@
         <div class="col-sm-10">
         <textarea type="text" class="form-control" id="description" name="description" placeholder="Descripción del paquete" rows="5" value="{{old('description')}}"></textarea>
         @foreach ($errors->get('description') as $mensaje)
-            <small style="color:#333399;">{{ $mensaje }}</small>
+            <small class="error-msg">{{ $mensaje }}</small>
         @endforeach    
         </div>
     </div>
@@ -43,7 +43,7 @@
         <div class="col-sm-10">
         <textarea type="text" class="form-control" id="conditions" name="conditions" placeholder="Condiciones del paquete" rows="5" value="{{old('conditions')}}"></textarea>
         @foreach ($errors->get('conditions') as $mensaje)
-            <small style="color:#333399;">{{ $mensaje }}</small>
+            <small class="error-msg">{{ $mensaje }}</small>
         @endforeach    
         </div>
     </div>
@@ -59,7 +59,7 @@
             @endforeach
         </select>
         @foreach ($errors->get('section_id') as $mensaje)
-            <small style="color:#333399;">{{ $mensaje }}</small>
+            <small class="error-msg">{{ $mensaje }}</small>
         @endforeach
         </div>
     </div>
@@ -69,7 +69,7 @@
         <div class="col-sm-10">
         <input type="number" class="form-control" id="amount_people" name="amount_people" placeholder="Cantidad de personas" min="0" value="{{old('amount_people')}}">
         @foreach ($errors->get('amount_people') as $mensaje)
-            <small style="color:#333399;">{{ $mensaje }}</small>
+            <small class="error-msg">{{ $mensaje }}</small>
         @endforeach
         </div>
     </div>
@@ -80,7 +80,7 @@
         <div class="col-sm-10">
         <input type="number" class="form-control" id="price" name="price" placeholder="Precio del paquete" step="any" value="{{old('price')}}">
         @foreach ($errors->get('price') as $mensaje)
-            <small style="color:#333399;">{{ $mensaje }}</small>
+            <small class="error-msg">{{ $mensaje }}</small>
         @endforeach
         </div>
     </div>
@@ -93,49 +93,29 @@
         <label for="url_image1" class="col-sm-2 col-form-label">Imagen 1</label>
         <div class="col-sm-10">
         <input type="file" class="form-control" id="url_image1" name="url_image1" value="{{old('url_image1')}}">
-        @foreach ($errors->get('url_image1') as $mensaje)
-            <small style="color:#333399;">{{ $mensaje }}</small>
-        @endforeach
         </div>
     </div>
     <div class="form-group row">
         <label for="url_image2" class="col-sm-2 col-form-label">Imagen 2</label>
         <div class="col-sm-10">
         <input type="file" class="form-control" id="url_image2" name="url_image2" value="{{old('url_image2')}}">
-        @foreach ($errors->get('url_image2') as $mensaje)
-            <small style="color:#333399;">{{ $mensaje }}</small>
-        @endforeach
         </div>
     </div>
     <div class="form-group row">
         <label for="url_image3" class="col-sm-2 col-form-label">Imagen 3</label>
         <div class="col-sm-10">
         <input type="file" class="form-control" id="url_image3" name="url_image3" value="{{old('url_image3')}}">
-        @foreach ($errors->get('url_image3') as $mensaje)
-            <small style="color:#333399;">{{ $mensaje }}</small>
-        @endforeach
         </div>
     </div>
 
     <h6 class="my-4 center">Vídeos</h6>
     <div class="form-group row">
-        <label for="url_video1" class="col-sm-2 col-form-label">Vídeo 1</label>
+        <label for="url_video" class="col-sm-2 col-form-label">Vídeo</label>
         <div class="col-sm-10">
-        <input type="file" class="form-control" id="url_video1" name="url_video1" value="{{old('url_video1')}}">
-        @foreach ($errors->get('url_video1') as $mensaje)
-            <small style="color:#333399;">{{ $mensaje }}</small>
-        @endforeach
+        <input type="file" class="form-control" id="url_video" name="url_video" value="{{old('url_video')}}">
         </div>
     </div>
-    <div class="form-group row">
-        <label for="url_video2" class="col-sm-2 col-form-label">Vídeo 2</label>
-        <div class="col-sm-10">
-        <input type="file" class="form-control" id="url_video2" name="url_video2" value="{{old('url_video2')}}">
-        @foreach ($errors->get('url_video2') as $mensaje)
-            <small style="color:#333399;">{{ $mensaje }}</small>
-        @endforeach
-        </div>
-    </div>
+    
     
     <hr>
     <div class="items-container">

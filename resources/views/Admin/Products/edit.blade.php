@@ -13,7 +13,7 @@
     </div>
 
 
-    <form class="py-2 px-5" action="{{route('products.update', $product)}}" method="POST" method="POST" enctype="multipart/form-data">
+    <form class="py-2 px-5" action="{{route('products.update', $product)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="form-text pb-4">
@@ -29,7 +29,7 @@
             <div class="col-sm-10">
             <input type="text" class="form-control" id="name" name="name" placeholder="Nombre del producto" value="{{$product->name}}">
             @foreach ($errors->get('name') as $mensaje)
-                <small style="color:#960303;">{{ $mensaje }}</small>
+                <small class="error-msg">{{ $mensaje }}</small>
             @endforeach
             </div>
         </div>
@@ -38,7 +38,7 @@
             <div class="col-sm-10">
             <textarea type="text" class="form-control" id="description" name="description" placeholder="Descripción del producto" rows="5">{{$product->description}}</textarea>
             @foreach ($errors->get('description') as $mensaje)
-                <small style="color:#960303;">{{ $mensaje }}</small>
+                <small class="error-msg">{{ $mensaje }}</small>
             @endforeach    
         </div>
         </div>
@@ -47,7 +47,7 @@
             <div class="col-sm-10">
             <input type="number" class="form-control" id="price" name="price" placeholder="Precio del producto" step="any" value="{{number_format($product->price,2)}}">
             @foreach ($errors->get('price') as $mensaje)
-                <small style="color:#960303;">{{ $mensaje }}</small>
+                <small class="error-msg">{{ $mensaje }}</small>
             @endforeach
             </div>
         </div>
@@ -62,7 +62,7 @@
                 @endforeach
             </select>
             @foreach ($errors->get('category') as $mensaje)
-                <small style="color:#960303;">{{ $mensaje }}</small>
+                <small class="error-msg">{{ $mensaje }}</small>
             @endforeach
             </div>
         </div>
@@ -75,7 +75,7 @@
                 <option value="0" {{ ($product->available == 0 ? "selected":"") }}>No disponible</option>
             </select>
             @foreach ($errors->get('available') as $mensaje)
-                <small style="color:#960303;">{{ $mensaje }}</small>
+                <small class="error-msg">{{ $mensaje }}</small>
             @endforeach
             </div>
         </div>

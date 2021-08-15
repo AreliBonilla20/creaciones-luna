@@ -28,7 +28,7 @@ body{
 .panel{
     text-align: center;
     padding: 1%;
-    background: #f1ccfc
+    background: #f5e9f8;
 }
 
 .panel-menu{
@@ -120,6 +120,8 @@ body{
 
 .show-img{
     text-align: center;
+    background: #f5eded;
+    margin: 10px;
 }
 
 .btn-show{
@@ -145,17 +147,25 @@ body{
     color: #ffffff;
 }
 
+.error-msg{
+    color: #971319;
+}
 
+.items-package{
+    padding: 5%;
+    background: #ffdac8;
+    border-radius: 2%;
+}
 .footer{
     text-align: center;
-    background:#9ef8ef;
+    background: #d8faf7;
     padding: 1%;
     color: #000000;
     font-size: 15px;
     font-weight: bold;
-    margin-top: 2%;
-
 }
+
+/*linear-gradient(90deg, rgba(159,249,240,1) 68%, #f1ccfcdf 98%);*/
 
 
 

@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\CategoryProduct;
 use Illuminate\Http\Request;
-use App\Http\Requests\ProductCreateRequest;
-use App\Http\Requests\ProductEditRequest;
+use App\Http\Requests\ProductRequest;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -40,7 +39,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductCreateRequest $request)
+    public function store(ProductRequest $request)
     {
         $product = new Product();
         $product->category_id = $request->category_id;
@@ -95,7 +94,7 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductEditRequest $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {   
         $product->category_id = $request->category_id;
         $product->name = $request->name;
@@ -117,8 +116,6 @@ class ProductController extends Controller
         {
             return redirect()->route('products.index')->withWarning('Ocurrió un error!');
         }
-
-        
     }
 
     /**

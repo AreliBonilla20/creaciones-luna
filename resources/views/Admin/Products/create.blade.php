@@ -23,7 +23,7 @@
         <div class="col-sm-10">
         <input type="text" class="form-control" id="name" name="name" placeholder="Nombre del producto" value="{{old('name')}}">
         @foreach ($errors->get('name') as $mensaje)
-            <small style="color:#333399;">{{ $mensaje }}</small>
+            <small class="error-msg">{{ $mensaje }}</small>
         @endforeach
         </div>
     </div>
@@ -32,7 +32,7 @@
         <div class="col-sm-10">
         <textarea type="text" class="form-control" id="description" name="description" placeholder="Descripción del producto" rows="5" value="{{old('description')}}"></textarea>
         @foreach ($errors->get('description') as $mensaje)
-            <small style="color:#333399;">{{ $mensaje }}</small>
+            <small class="error-msg">{{ $mensaje }}</small>
         @endforeach    
     </div>
     </div>
@@ -41,7 +41,7 @@
         <div class="col-sm-10">
         <input type="number" class="form-control" id="price" name="price" placeholder="Precio del producto" step="any" value="{{old('price')}}">
         @foreach ($errors->get('price') as $mensaje)
-            <small style="color:#333399;">{{ $mensaje }}</small>
+            <small class="error-msg">{{ $mensaje }}</small>
         @endforeach
         </div>
     </div>
@@ -56,7 +56,7 @@
             @endforeach
         </select>
         @foreach ($errors->get('category_id') as $mensaje)
-            <small style="color:#333399;">{{ $mensaje }}</small>
+            <small class="error-msg">{{ $mensaje }}</small>
         @endforeach
         </div>
     </div>
@@ -69,7 +69,7 @@
             <option value="0">No disponible</option>
         </select>
         @foreach ($errors->get('available') as $mensaje)
-            <small style="color:#333399;">{{ $mensaje }}</small>
+            <small class="error-msg">{{ $mensaje }}</small>
         @endforeach
         </div>
     </div>
@@ -78,9 +78,6 @@
         <label for="url_image" class="col-sm-2 col-form-label">Imagen <span>(*)</span></label>
         <div class="col-sm-10">
         <input type="file" class="form-control" id="url_image" name="url_image" value="{{old('url_image')}}">
-        @foreach ($errors->get('url_image') as $mensaje)
-            <small style="color:#333399;">{{ $mensaje }}</small>
-        @endforeach
         </div>
     </div>
 

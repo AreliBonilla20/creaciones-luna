@@ -8,56 +8,20 @@ use Illuminate\Http\Request;
 class ItemPackageController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $package)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\ItemPackage  $itemPackage
-     * @return \Illuminate\Http\Response
-     */
-    public function show(ItemPackage $itemPackage)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\ItemPackage  $itemPackage
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(ItemPackage $itemPackage)
-    {
-        //
+        for($i=0; $i<count($request->item); $i++)
+            {
+                $item_package = new ItemPackage();
+                $item_package->package_id = $package->id;
+                $item_package->name = $request->item[$i];
+                $item_package->save();
+            }
     }
 
     /**
@@ -67,9 +31,10 @@ class ItemPackageController extends Controller
      * @param  \App\ItemPackage  $itemPackage
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ItemPackage $itemPackage)
-    {
-        //
+    public function update(Request $request, $package)
+    {   
+        $this->destroy($package->id);
+        $this->store($request, $package);
     }
 
     /**
@@ -78,8 +43,8 @@ class ItemPackageController extends Controller
      * @param  \App\ItemPackage  $itemPackage
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ItemPackage $itemPackage)
+    public function destroy($id)
     {
-        //
+        $items = ItemPackage::where('package_id', $id)->delete();
     }
 }

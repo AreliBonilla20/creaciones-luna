@@ -19,10 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/admin', 'PageController@index')->name('admin');
-
-
 Route::resource('products', 'ProductController');
 Route::resource('sections', 'SectionPackageController');
 Route::resource('packages', 'PackageController');
+Route::resource('page', 'PageController');
 

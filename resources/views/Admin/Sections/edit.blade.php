@@ -13,7 +13,7 @@
     </div>
 
 
-    <form class="py-2 px-5" action="{{route('sections.update', $section)}}" method="POST" method="POST">
+    <form class="py-2 px-5" action="{{route('sections.update', $section)}}" method="POST">
         @csrf
         @method('PUT')
         <div class="form-text pb-4">
@@ -25,7 +25,7 @@
             <div class="col-sm-10">
             <input type="text" class="form-control" id="name" name="name" placeholder="Nombre de la sección" value="{{$section->name}}">
             @foreach ($errors->get('name') as $mensaje)
-                <small style="color:#960303;">{{ $mensaje }}</small>
+                <small class="error-msg">{{ $mensaje }}</small>
             @endforeach
             </div>
         </div>
@@ -34,7 +34,7 @@
             <div class="col-sm-10">
             <textarea type="text" class="form-control" id="description" name="description" placeholder="Descripción de la sección" rows="5">{{$section->description}}</textarea>
             @foreach ($errors->get('description') as $mensaje)
-                <small style="color:#960303;">{{ $mensaje }}</small>
+                <small class="error-msg">{{ $mensaje }}</small>
             @endforeach    
         </div>
         </div>

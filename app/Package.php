@@ -9,7 +9,7 @@ class Package extends Model
     protected $table = 'packages';
 
     protected $fillable = [
-        'name', 'description', 'conditions', 'price', 'amount_people', 'url_image1', 'url_image2', 'url_image3', 'url_video1', 'url_video2',  'section_id',
+        'name', 'description', 'conditions', 'price', 'amount_people', 'url_image1', 'url_image2', 'url_image3', 'url_video', 'section_id',
     ];
 
     public function section()
@@ -46,20 +46,14 @@ class Package extends Model
         }
     }
 
-    public function getGetVideo1Attribute()
+    public function getGetVideoAttribute()
     {
-        if($this->url_video1)
+        if($this->url_video)
         {
-            return url("Storage/$this->url_video1");
+            return url("Storage/$this->url_video");
         }
     }
 
-    public function getGetVideo2Attribute()
-    {
-        if($this->url_video2)
-        {
-            return url("Storage/$this->url_video2");
-        }
-    }
+
 
 }

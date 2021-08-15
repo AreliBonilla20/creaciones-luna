@@ -9,7 +9,7 @@
 
   <div class="index-content">
   <a href="{{route('sections.create')}}"><button class="btn btn-add"><i class="bi bi-plus"></i>Agregar sección</button></a>
-  
+ 
   @if(count($sections)>0)
   <div class="py-4">
     <table class="table table-hover">
@@ -31,13 +31,13 @@
         <td>{{$section->name}}</td>
         <td>{{$section->description}}</td>
         <td>3</td>
-        <td><a href="{{route('sections.show', $section)}}"><button class="btn btn-consult"><i class="bi bi-eye"></i> Consultar</button></a></td>
-        <td><a href="{{route('sections.edit', $section)}}"><button class="btn btn-edit"><i class="bi bi-pencil"></i> Editar</button></a></td>
+        <td><a href="{{route('sections.show', $section)}}"><button class="btn btn-consult btn-sm"><i class="bi bi-eye"></i> Consultar</button></a></td>
+        <td><a href="{{route('sections.edit', $section)}}"><button class="btn btn-edit btn-sm"><i class="bi bi-pencil"></i> Editar</button></a></td>
         <td>
         <form method="POST" id="formulario{{$section->id}}" action="{{route('sections.destroy', $section->id)}}" >
             @csrf
             @method('DELETE')
-            <button type="button" onClick="confirmar({{$section->id}})" class="btn btn-delete"><i class="bi bi-trash"></i> Eliminar</button>
+            <button type="button" onClick="confirmar({{$section->id}})" class="btn btn-delete btn-sm"><i class="bi bi-trash"></i> Eliminar</button>
         </form>                             
         </td>
       </tr>
@@ -48,6 +48,7 @@
   @endif
   </div>
 </div>
+
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="{{ asset('js/delete_product.js') }}"></script>
 @endsection

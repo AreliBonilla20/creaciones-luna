@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Package;
 use App\SectionPackage;
 use App\ItemPackage;
+use App\Http\Requests\PackageRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PackageController extends Controller
 {
@@ -37,7 +39,7 @@ class PackageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PackageRequest $request)
     {  
        
         $package = new Package();
@@ -49,7 +51,7 @@ class PackageController extends Controller
         $package->amount_people = $request->amount_people;
 
         if($request->file('url_image1'))
-        {
+        {   
             $package->url_image1 = $request->file('url_image1')->store('packages', 'public');
         }
         if($request->file('url_image2'))
@@ -60,25 +62,15 @@ class PackageController extends Controller
         {
             $package->url_image3 = $request->file('url_image3')->store('packages', 'public');
         }
-        if($request->file('url_video1'))
+        if($request->file('url_video'))
         {
-            $package->url_video1 = $request->file('url_video1')->store('packages', 'public');
+            $package->url_video = $request->file('url_video')->store('packages', 'public');
         }
-        if($request->file('url_video2'))
-        {
-            $package->url_video2 = $request->file('url_video2')->store('packages', 'public');
-        }
-
+    
 
         if($package->save())
         {   
-            for($i=0; $i<count($request->item); $i++)
-            {
-                $item_package = new ItemPackage();
-                $item_package->package_id = $package->id;
-                $item_package->name = $request->item[$i];
-                $item_package->save();
-            }
+            app('App\Http\Controllers\ItemPackageController')->store($request, $package);
             return redirect()->route('packages.index')->withSuccess('Paquete agregado correctamente!');
         }
         else
@@ -117,9 +109,46 @@ class PackageController extends Controller
      * @param  \App\Package  $package
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Package $package)
+    public function update(PackageRequest $request, Package $package)
     {
-        //
+        $package->section_id = $request->section_id;
+        $package->name = $request->name;
+        $package->description = $request->description;
+        $package->conditions = $request->conditions;
+        $package->price = $request->price;
+        $package->amount_people = $request->amount_people;
+
+        if($request->file('url_image1'))
+        {   
+            Storage::disk('public')->delete($product->url_image1);
+            $package->url_image1 = $request->file('url_image1')->store('packages', 'public');
+        }
+        if($request->file('url_image2'))
+        {
+            Storage::disk('public')->delete($product->url_image2);
+            $package->url_image2 = $request->file('url_image2')->store('packages', 'public');
+        }
+        if($request->file('url_image3'))
+        {   
+            Storage::disk('public')->delete($product->url_image3);
+            $package->url_image3 = $request->file('url_image3')->store('packages', 'public');
+        }
+        if($request->file('url_video'))
+        {   
+            Storage::disk('public')->delete($product->url_video);
+            $package->url_video = $request->file('url_video')->store('packages', 'public');
+        }
+       
+
+        if($package->save())
+        {   
+            app('App\Http\Controllers\ItemPackageController')->update($request, $package);
+            return redirect()->route('packages.index')->withSuccess('Paquete actualizado correctamente!');
+        }
+        else
+        {
+            return redirect()->route('packages.index')->withWarning('Ocurrió un error!');
+        }
     }
 
     /**
@@ -130,7 +159,10 @@ class PackageController extends Controller
      */
     public function destroy($id)
     {
-        $package = Package::findOrFail($id);
+        app('App\Http\Controllers\ItemPackageController')->destroy($id);
+        $package = Package::findOrFail($id)->delete();
+
+        return redirect()->route('packages.index');
 
     }
 }
