@@ -1,0 +1,30 @@
+body{
+    background: #d68bb7;
+}
+
+.center{
+    text-align: center;
+}
+
+.card-cl{
+    -webkit-box-shadow:0px 0px 23px -3px rgba(0,0,0,0.95);
+    -moz-box-shadow:   0px 0px 23px -3px rgba(0,0,0,0.95);
+     box-shadow:        0px 0px 23px -3px rgba(0,0,0,0.95);
+}
+
+.input-cl{
+    background: rgb(231, 230, 230);
+    height: 50px;
+}
+
+.btn-login{
+    background: #68c5d1;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.btn-login:hover{
+    background: #9fd6dd;
+    color: white;
+}

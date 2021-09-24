@@ -17,7 +17,6 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Nombre</th>
-        <th scope="col">Descripción</th>
         <th scope="col">Paquetes</th>
         <th scope="col">Consultar</th>
         <th scope="col">Editar</th>
@@ -29,8 +28,7 @@
       <tr>
         <th scope="row">{{$section->id}}</th>
         <td>{{$section->name}}</td>
-        <td>{{$section->description}}</td>
-        <td>3</td>
+        <td>{{count($section->packages)}}</td>
         <td><a href="{{route('sections.show', $section)}}"><button class="btn btn-consult btn-sm"><i class="bi bi-eye"></i> Consultar</button></a></td>
         <td><a href="{{route('sections.edit', $section)}}"><button class="btn btn-edit btn-sm"><i class="bi bi-pencil"></i> Editar</button></a></td>
         <td>
@@ -50,5 +48,5 @@
 </div>
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="{{ asset('js/delete_product.js') }}"></script>
+<script src="{{ asset('js/delete_confirm.js') }}"></script>
 @endsection

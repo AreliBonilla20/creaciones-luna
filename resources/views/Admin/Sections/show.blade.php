@@ -8,27 +8,22 @@
     </div>
 
     <div class="pb-4 content-title">
-        <h4>Consultar producto</h4>
-        <p>{{$product->name}}</p>
+        <h4>Consultar sección</h4>
+        <p>{{$section->name}}</p>
     </div>
 
   <div class="card">
     <div class="card-header">
-      Producto N°. {{$product->id}}
+      Sección N°. {{$section->id}}
     </div>
     <div class="card-body">
-      <div class="py-4 show-img">
-          <img src="{{$product->get_image}}" alt="Imagen del producto" height="300" width="200">
-      </div>
-      <h4 class="card-title">{{$product->name}}</h4>
-      <p class="card-text pt-4">{{$product->description}}</p>
-      <p>Categoría : <strong>{{$product->category->name}}</strong></p>
-      <p>Precio : <strong>$ {{number_format($product->price, 2)}}</strong></p>
-      <p>Disponibilidad : <strong>{{$product->get_availability}}</strong></p>
+      
+      <h4 class="card-title">{{$section->name}}</h4>
+      <p class="card-text pt-4">{{$section->description}}</p>
     
       <div class="btn-show">
-          <a href="{{route('products.edit', $product)}}"><button class="btn btn-edit btn-sm"><i class="bi bi-pencil"></i> Editar</button></a>
-          <a href="{{route('products.destroy', $product)}}"><button class="btn btn-delete btn-sm"><i class="bi bi-trash"></i> Eliminar</button>
+          <a href="{{route('sections.edit', $section)}}"><button class="btn btn-edit btn-sm"><i class="bi bi-pencil"></i> Editar</button></a>
+          <a href="{{route('sections.destroy', $section)}}"><button class="btn btn-delete btn-sm"><i class="bi bi-trash"></i> Eliminar</button>
       </div>
     </div>
   </div>

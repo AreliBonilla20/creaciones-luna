@@ -88,7 +88,7 @@
                 <div class="col-12">
                     <ul class="nav justify-content-center" >
                         <li class="nav-item">
-                            <a class="nav-link panel-link " href="{{route('page.index')}}"> <h6>Contenido</h6> </a> 
+                            <a class="nav-link panel-link" href="{{route('page.index')}}"> <h6>Contenido</h6> </a> 
                         </li>
                         <li class="nav-item">
                             <a class="nav-link panel-link" href="{{route('products.index')}}"> <h6>Productos</h6></a>

@@ -16,8 +16,8 @@ class PageController extends Controller
      */
     public function index()
     {   
-        $page_content = Page::get()->first();
-        return view('Admin.Page.index', compact('page_content'));
+        $page = Page::get()->first();
+        return view('Admin.Page.index', compact('page'));
     }
 
     /**
@@ -38,11 +38,11 @@ class PageController extends Controller
      */
     public function store(PageRequest $request)
     {
-        $page_content = new Page();
-        $page_content->description_header = $request->description_header;
-        $page_content->who_we_are = $request->who_we_are;
+        $page = new Page();
+        $page->description_header = $request->description_header;
+        $page->who_we_are = $request->who_we_are;
         
-        if($page_content->save())
+        if($page->save())
         {
             return redirect()->route('page.index')->withSuccess('Contenido agregado correctamente!');
         }
@@ -59,9 +59,9 @@ class PageController extends Controller
      * @param  \App\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function edit(Page $page_content)
+    public function edit(Page $page)
     {
-        return view('Admin.Page.edit', compact('page_content'));
+        return view('Admin.Page.edit', compact('page'));
     }
 
     /**
@@ -71,13 +71,13 @@ class PageController extends Controller
      * @param  \App\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function update(PageRequest $request, Page $page_content)
+    public function update(PageRequest $request, Page $page)
     {
     
-        $page_content->description_header = $request->description_header;
-        $page_content->who_we_are = $request->who_we_are;
+        $page->description_header = $request->description_header;
+        $page->who_we_are = $request->who_we_are;
         
-        if($page_content->save())
+        if($page->save())
         {
             return redirect()->route('page.index')->withSuccess('Contenido actualizado correctamente!');
         }
@@ -95,6 +95,9 @@ class PageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $page = Page::findOrFail($id);
+        $page->delete();
+
+        return redirect()->route('page.index');
     }
 }

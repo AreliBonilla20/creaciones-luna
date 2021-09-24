@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {   
-    use Sluggable;
+    //use Sluggable;
 
     protected $fillable = [
         'name', 'description', 'price', 'available', 'url_image', 'category_id',
     ];
 
-    public function sluggable(): array
+    /*public function sluggable(): array
     {
         return [
             'slug' => [
@@ -21,7 +21,7 @@ class Product extends Model
                 'onUpdate' => true
             ]
         ];
-    }
+    }*/
 
     public function category()
     {

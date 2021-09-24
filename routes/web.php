@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WebsiteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'WebsiteController@index');
+Route::get('products_list', 'WebsiteController@products');
+Route::get('packages_list', 'WebsiteController@packages');
+Route::get('bookstore_list', 'WebsiteController@bookstore');
 
 Auth::routes();
 
